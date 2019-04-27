@@ -8,6 +8,7 @@ import {
   thetaArray,
   oneAngle
 } from "./utils/extractData";
+import Toggles from "./Toggles";
 
 class Radar extends Component {
   constructor(props) {
@@ -15,7 +16,12 @@ class Radar extends Component {
     this.state = {
       radius: [],
       theta: [],
-      names: []
+      names: [],
+      isMarkerVisible: true,
+      isLevelVisible: true,
+      isDividerVisible: true,
+      isCircleVisible: true,
+      isCategoryVisible: true
     };
   }
 
@@ -31,23 +37,32 @@ class Radar extends Component {
     });
   };
 
+  handleToggle = (handle, event) => {
+    this.setState({ [handle]: !this.state[handle] });
+  };
+
   render() {
     const { radius, theta, names } = this.state;
     return (
       <React.Fragment>
         <h1>Language Proficiencies</h1>
+        <Toggles handleToggle={this.handleToggle} />
         <Plot
           className="animated bounceInLeft tc mt0"
           useResizeHandler={true}
           data={[
+            //category dividers
+
             ...categoriesAngleArray().map(a => ({
               r: [0, 6.2],
               theta: [0, a],
               type: "scatterpolar",
               line: { dash: "dash", color: "gray", width: 1 },
-              hoverinfo: "text"
+              hoverinfo: "text",
+              visible: this.state.isDividerVisible
             })),
 
+            // level labels
             {
               r: [1, 2.6, 4.0, 5.5],
               theta: [90, 90, 90, 90],
@@ -55,7 +70,7 @@ class Radar extends Component {
               mode: "text",
               type: "scatterpolar",
               hoverinfo: "none",
-
+              visible: this.state.isLevelVisible,
               textfont: { size: 15 },
               hoverlabel: {
                 bgcolor: "black",
@@ -65,6 +80,8 @@ class Radar extends Component {
                 namelength: 30
               }
             },
+
+            //markers
             {
               r: radius,
               theta: theta,
@@ -84,7 +101,8 @@ class Radar extends Component {
                 size: 13,
                 opacity: 0.5
               },
-              type: "scatterpolar"
+              type: "scatterpolar",
+              visible: this.state.isMarkerVisible
             }
           ]}
           layout={{
@@ -95,16 +113,18 @@ class Radar extends Component {
             width: 800,
             height: 800,
             showlegend: false,
+
             polar: {
               sector: this.props.sector,
               opacity: 1,
               layer: "above traces",
+              // concentric circles
               radialaxis: {
                 showline: false,
                 ticks: "",
                 angle: 0,
                 tickangle: 0,
-                visible: true,
+                visible: this.state.isCircleVisible,
                 tickfont: {
                   size: 17,
                   color: "gray"
@@ -114,6 +134,7 @@ class Radar extends Component {
                 showticklabels: false,
                 range: [0, 6.5]
               },
+              // category labels
               angularaxis: {
                 showgrid: false,
                 tickmode: "array",
@@ -127,7 +148,7 @@ class Radar extends Component {
                   size: 20,
                   color: "gray"
                 },
-                visible: true
+                visible: this.state.isCategoryVisible
               }
             }
           }}
