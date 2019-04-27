@@ -9,6 +9,8 @@ import {
   oneAngle
 } from "./utils/extractData";
 import Toggles from "./Toggles";
+import Code from "./Code";
+import { Grid, Sticky } from "semantic-ui-react";
 
 class Radar extends Component {
   constructor(props) {
@@ -42,117 +44,157 @@ class Radar extends Component {
   };
 
   render() {
-    const { radius, theta, names } = this.state;
+    const {
+      radius,
+      theta,
+      names,
+      isCategoryVisible,
+      isCircleVisible,
+      isDividerVisible,
+      isLevelVisible,
+      isMarkerVisible
+    } = this.state;
     return (
       <React.Fragment>
-        <h1>Language Proficiencies</h1>
-        <Toggles handleToggle={this.handleToggle} />
-        <Plot
-          className="animated bounceInLeft tc mt0"
-          useResizeHandler={true}
-          data={[
-            //category dividers
+        <Grid columns="equal" divided>
+          <Grid.Row>
+            <Grid.Column width={7}>
+              <div className="fixed">
+                <h1>Language Proficiencies</h1>
+                <Plot
+                  className="fixed tc mt0"
+                  useResizeHandler={true}
+                  data={[
+                    //category dividers
 
-            ...categoriesAngleArray().map(a => ({
-              r: [0, 6.2],
-              theta: [0, a],
-              type: "scatterpolar",
-              line: { dash: "dash", color: "gray", width: 1 },
-              hoverinfo: "text",
-              visible: this.state.isDividerVisible
-            })),
+                    ...categoriesAngleArray().map(a => ({
+                      r: [0, 6.2],
+                      theta: [0, a],
+                      type: "scatterpolar",
+                      line: { dash: "dash", color: "gray", width: 1 },
+                      hoverinfo: "text",
+                      visible: isDividerVisible
+                    })),
 
-            // level labels
-            {
-              r: [1, 2.6, 4.0, 5.5],
-              theta: [90, 90, 90, 90],
-              text: ["familiar", "beginner", "intermediate", "advanced"],
-              mode: "text",
-              type: "scatterpolar",
-              hoverinfo: "none",
-              visible: this.state.isLevelVisible,
-              textfont: { size: 15 },
-              hoverlabel: {
-                bgcolor: "black",
-                bordercolor: "black",
-                font: { family: "calibri", color: "white", size: 20 },
-                align: "left",
-                namelength: 30
-              }
-            },
+                    // level labels
+                    {
+                      r: [1, 2.6, 4.0, 5.5],
+                      theta: [90, 90, 90, 90],
+                      text: [
+                        "familiar",
+                        "beginner",
+                        "intermediate",
+                        "advanced"
+                      ],
+                      mode: "text",
+                      type: "scatterpolar",
+                      hoverinfo: "none",
+                      visible: isLevelVisible,
+                      textfont: { size: 15 },
+                      hoverlabel: {
+                        bgcolor: "black",
+                        bordercolor: "black",
+                        font: { family: "calibri", color: "white", size: 20 },
+                        align: "left",
+                        namelength: 30
+                      }
+                    },
 
-            //markers
-            {
-              r: radius,
-              theta: theta,
-              text: names,
-              hoverinfo: "text",
+                    {
+                      r: radius,
+                      theta: theta,
+                      text: names,
+                      hoverinfo: "text",
 
-              hoverlabel: {
-                bgcolor: "black",
-                bordercolor: "black",
-                font: { family: "calibri", color: "white", size: 20 }
-              },
-              mode: "markers",
+                      hoverlabel: {
+                        bgcolor: "black",
+                        bordercolor: "black",
+                        font: { family: "calibri", color: "white", size: 20 }
+                      },
+                      mode: "markers",
 
-              marker: {
-                symbol: "triangle-down",
-                color: "rgb(138, 42, 226)",
-                size: 13,
-                opacity: 0.5
-              },
-              type: "scatterpolar",
-              visible: this.state.isMarkerVisible
-            }
-          ]}
-          layout={{
-            dragmode: "pan",
-            paper_bgcolor: "rgba(0,0,0,0)",
-            plot_bgcolor: "rgba(0,0,0,0)",
+                      marker: {
+                        symbol: "triangle-down",
+                        color: "rgb(138, 42, 226)",
+                        size: 13,
+                        opacity: 0.5
+                      },
+                      type: "scatterpolar",
+                      visible: isMarkerVisible
+                    }
+                  ]}
+                  layout={{
+                    dragmode: "pan",
+                    paper_bgcolor: "rgba(0,0,0,0)",
+                    plot_bgcolor: "rgba(0,0,0,0)",
 
-            width: 800,
-            height: 800,
-            showlegend: false,
+                    width: 800,
+                    height: 800,
+                    showlegend: false,
 
-            polar: {
-              sector: this.props.sector,
-              opacity: 1,
-              layer: "above traces",
-              // concentric circles
-              radialaxis: {
-                showline: false,
-                ticks: "",
-                angle: 0,
-                tickangle: 0,
-                visible: this.state.isCircleVisible,
-                tickfont: {
-                  size: 17,
-                  color: "gray"
-                },
-                tickmode: "array",
-                tickvals: [0, 1.9, 3.35, 4.8, 6.2],
-                showticklabels: false,
-                range: [0, 6.5]
-              },
-              // category labels
-              angularaxis: {
-                showgrid: false,
-                tickmode: "array",
-                showline: false,
-                tickvals: getCategories().map(
-                  (a, index) => (index + 1) * oneAngle() - oneAngle() / 2
-                ),
-                ticks: "",
-                ticktext: getCategories(),
-                tickfont: {
-                  size: 20,
-                  color: "gray"
-                },
-                visible: this.state.isCategoryVisible
-              }
-            }
-          }}
-        />
+                    polar: {
+                      sector: this.props.sector,
+                      opacity: 1,
+                      layer: "above traces",
+                      // concentric circles
+                      radialaxis: {
+                        showline: false,
+                        ticks: "",
+                        angle: 0,
+                        tickangle: 0,
+                        visible: isCircleVisible,
+                        tickfont: {
+                          size: 17,
+                          color: "gray"
+                        },
+                        tickmode: "array",
+                        tickvals: [0, 1.9, 3.35, 4.8, 6.2],
+                        showticklabels: false,
+                        range: [0, 6.5]
+                      },
+                      // category labels
+                      angularaxis: {
+                        showgrid: false,
+                        tickmode: "array",
+                        showline: false,
+                        tickvals: getCategories().map(
+                          (a, index) =>
+                            (index + 1) * oneAngle() - oneAngle() / 2
+                        ),
+                        ticks: "",
+                        ticktext: getCategories(),
+                        tickfont: {
+                          size: 20,
+                          color: "gray"
+                        },
+                        visible: isCategoryVisible
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </Grid.Column>
+            <Grid.Column width={3} className="fixed">
+              <div className="fixed w-20">
+                <h1>Elements </h1>
+                <Toggles handleToggle={this.handleToggle} />
+              </div>
+            </Grid.Column>
+
+            <Grid.Column>
+              <h1>Code</h1>
+              <div className=" ">
+                <Code
+                  isCategoryVisible={isCategoryVisible}
+                  isCircleVisible={isCircleVisible}
+                  isDividerVisible={isDividerVisible}
+                  isLevelVisible={isLevelVisible}
+                  isMarkerVisible={isMarkerVisible}
+                />
+              </div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </React.Fragment>
     );
   }
