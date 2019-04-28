@@ -58,9 +58,9 @@ class Radar extends Component {
       <React.Fragment>
         <Grid columns="equal" divided>
           <Grid.Row>
-            <Grid.Column width={7}>
+            <Grid.Column width={6}>
               <div className="fixed">
-                <h1>Language Proficiencies</h1>
+                <h1>Plot</h1>
                 <Plot
                   className="fixed tc mt0"
                   useResizeHandler={true}
@@ -128,8 +128,8 @@ class Radar extends Component {
                     paper_bgcolor: "rgba(0,0,0,0)",
                     plot_bgcolor: "rgba(0,0,0,0)",
 
-                    width: 800,
-                    height: 800,
+                    width: 700,
+                    height: 700,
                     showlegend: false,
 
                     polar: {
@@ -183,15 +183,13 @@ class Radar extends Component {
 
             <Grid.Column>
               <h1>Code</h1>
-              <div className=" ">
-                <Code
-                  isCategoryVisible={isCategoryVisible}
-                  isCircleVisible={isCircleVisible}
-                  isDividerVisible={isDividerVisible}
-                  isLevelVisible={isLevelVisible}
-                  isMarkerVisible={isMarkerVisible}
-                />
-              </div>
+              <Code
+                isCategoryVisible={isCategoryVisible}
+                isCircleVisible={isCircleVisible}
+                isDividerVisible={isDividerVisible}
+                isLevelVisible={isLevelVisible}
+                isMarkerVisible={isMarkerVisible}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
