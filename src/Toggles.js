@@ -11,19 +11,22 @@ const toggleNames = [
 
 const Toggles = ({ handleToggle }) => {
   return (
-    <div class=" dt mt7 center w-70">
-      <div class="dtc tc ">
-        {toggleNames.map((a, index) => (
-          <div className="pv3 f3 flex justify-between">
-            <label>{a.name}</label>
-            <Checkbox
-              key={index}
-              onChange={() => handleToggle(a.handle)}
-              toggle
-              defaultChecked
-            />
-          </div>
-        ))}
+    <div className="fixed w-20">
+      <h1>Elements</h1>
+      <div class=" dt mt7 center w-70">
+        <div class="dtc tc ">
+          {toggleNames.map((a, index) => (
+            <div className="pv3 f3 flex justify-between">
+              <label>{a.name}</label>
+              <Checkbox
+                key={index}
+                onChange={() => handleToggle(a.handle)}
+                toggle
+                // defaultChecked
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -8,16 +8,18 @@ const Code = ({
   isMarkerVisible
 }) => {
   return (
-    <div className="tl f4">
-      <pre>{`
+    <React.Fragment>
+      <h1>Code</h1>
+      <div className="tl f4">
+        <pre>{`
       <Plot
       data={[`}</pre>
 
-      <pre
-        className={`${
-          isDividerVisible ? "bg-light-green navy br3" : undefined
-        } pa2`}
-      >{`
+        <pre
+          className={`${
+            isDividerVisible ? "bg-light-green navy br3" : undefined
+          } pa2`}
+        >{`
       ...categoriesAngleArray().map(a => ({
       r: [0, 6.2],
       theta: [0, a],
@@ -28,11 +30,11 @@ const Code = ({
       })),
       `}</pre>
 
-      <pre
-        className={`${
-          isLevelVisible ? "bg-light-green navy br3" : undefined
-        } pa2`}
-      >{`    
+        <pre
+          className={`${
+            isLevelVisible ? "bg-light-green navy br3" : undefined
+          } pa2`}
+        >{`    
       {
       r: [1, 2.6, 4.0, 5.5],
       theta: [90, 90, 90, 90],
@@ -51,11 +53,11 @@ const Code = ({
                 }
       },`}</pre>
 
-      <pre
-        className={`${
-          isMarkerVisible ? "bg-light-green navy br3" : undefined
-        } pa2`}
-      >{`              
+        <pre
+          className={`${
+            isMarkerVisible ? "bg-light-green navy br3" : undefined
+          } pa2`}
+        >{`              
       {
       r: radius,
       theta: theta,
@@ -76,7 +78,7 @@ const Code = ({
       type: "scatterpolar",
       visible: isMarkerVisible
       } `}</pre>
-      <pre>{` 
+        <pre>{` 
       ]}
       layout={{
               dragmode: "pan",
@@ -91,11 +93,11 @@ const Code = ({
                      layer: "above traces",
         `}</pre>
 
-      <pre
-        className={`${
-          isCircleVisible ? "bg-light-green navy br3" : undefined
-        } pa2`}
-      >{`             radialaxis: {
+        <pre
+          className={`${
+            isCircleVisible ? "bg-light-green navy br3" : undefined
+          } pa2`}
+        >{`             radialaxis: {
                           showline: false,
                           ticks: "",
                           angle: 0,
@@ -111,11 +113,11 @@ const Code = ({
                           range: [0, 6.5]
                           },`}</pre>
 
-      <pre
-        className={`${
-          isCategoryVisible ? "bg-light-green navy br3" : undefined
-        } pa2`}
-      >{`              angularaxis: {
+        <pre
+          className={`${
+            isCategoryVisible ? "bg-light-green navy br3" : undefined
+          } pa2`}
+        >{`              angularaxis: {
                            showgrid: false,
                            tickmode: "array",
                            showline: false,
@@ -131,10 +133,11 @@ const Code = ({
                            visible: isCategoryVisible
                            }`}</pre>
 
-      <pre>{`}
+        <pre>{`}
             }}
     />`}</pre>
-    </div>
+      </div>
+    </React.Fragment>
   );
 };
 
