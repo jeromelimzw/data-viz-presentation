@@ -8,7 +8,7 @@ const Code = ({
   isMarkerVisible
 }) => {
   return (
-    <div className="tl">
+    <div className="tl f4">
       <pre>{`
       <Plot
       data={[`}</pre>
@@ -16,7 +16,7 @@ const Code = ({
       <pre
         className={`${
           isDividerVisible ? "bg-light-green navy br3" : undefined
-        } pa3`}
+        } pa2`}
       >{`
       ...categoriesAngleArray().map(a => ({
       r: [0, 6.2],
@@ -31,7 +31,7 @@ const Code = ({
       <pre
         className={`${
           isLevelVisible ? "bg-light-green navy br3" : undefined
-        } pa3`}
+        } pa2`}
       >{`    
       {
       r: [1, 2.6, 4.0, 5.5],
@@ -54,7 +54,7 @@ const Code = ({
       <pre
         className={`${
           isMarkerVisible ? "bg-light-green navy br3" : undefined
-        } pa3`}
+        } pa2`}
       >{`              
       {
       r: radius,
@@ -94,7 +94,7 @@ const Code = ({
       <pre
         className={`${
           isCircleVisible ? "bg-light-green navy br3" : undefined
-        } pa3`}
+        } pa2`}
       >{`             radialaxis: {
                           showline: false,
                           ticks: "",
@@ -114,13 +114,14 @@ const Code = ({
       <pre
         className={`${
           isCategoryVisible ? "bg-light-green navy br3" : undefined
-        } pa3`}
+        } pa2`}
       >{`              angularaxis: {
                            showgrid: false,
                            tickmode: "array",
                            showline: false,
                            tickvals: getCategories().map(
-                           (a, index) => (index + 1) * oneAngle() - oneAngle() / 2),
+                           (a, index) => 
+                           (index + 1) * oneAngle() - oneAngle() / 2),
                            ticks: "",
                            ticktext: getCategories(),
                            tickfont: {
