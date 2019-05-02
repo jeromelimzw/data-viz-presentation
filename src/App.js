@@ -8,11 +8,13 @@ import Toggles from "./Toggles";
 import Code from "./Code";
 import Radar from "./Radar";
 import { Grid } from "semantic-ui-react";
+const eight = require("./static/8cats");
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: eight,
       radius: [],
       theta: [],
       names: [],
@@ -25,19 +27,25 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    await this.renderMarkers();
+    await this.renderMarkers(this.state.data);
   }
 
-  renderMarkers = async () => {
+  renderMarkers = async data => {
     await this.setState({
-      radius: levelArrayRandomized(),
-      theta: thetaArray(),
-      names: nameArray()
+      radius: levelArrayRandomized(data),
+      theta: thetaArray(data),
+      names: nameArray(data)
     });
   };
 
   handleToggle = (handle, event) => {
     this.setState({ [handle]: !this.state[handle] });
+  };
+
+  handleDataSource = async (event, data) => {
+    const selectedData = require(`./static/${data.value}cats`);
+    await this.setState({ data: selectedData });
+    await this.renderMarkers(this.state.data);
   };
 
   render() {
@@ -49,15 +57,17 @@ class App extends Component {
       isCircleVisible,
       isDividerVisible,
       isLevelVisible,
-      isMarkerVisible
+      isMarkerVisible,
+      data
     } = this.state;
-    const { handleToggle } = this;
+    const { handleToggle, handleDataSource } = this;
     return (
       <div className="tc center mt5">
         <Grid columns="equal" divided>
           <Grid.Row>
             <Grid.Column width={6}>
               <Radar
+                data={data}
                 radius={radius}
                 theta={theta}
                 names={names}
@@ -69,7 +79,10 @@ class App extends Component {
               />
             </Grid.Column>
             <Grid.Column width={3} className="fixed">
-              <Toggles handleToggle={handleToggle} />
+              <Toggles
+                handleToggle={handleToggle}
+                handleDataSource={handleDataSource}
+              />
             </Grid.Column>
 
             <Grid.Column>

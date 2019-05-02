@@ -14,7 +14,8 @@ const Radar = ({
   isCircleVisible,
   isDividerVisible,
   isLevelVisible,
-  isMarkerVisible
+  isMarkerVisible,
+  data
 }) => {
   return (
     <div className="fixed">
@@ -23,7 +24,7 @@ const Radar = ({
         className="fixed tc mt0"
         useResizeHandler={true}
         data={[
-          ...categoriesAngleArray().map(a => ({
+          ...categoriesAngleArray(data).map(a => ({
             r: [0, 6.2],
             theta: [0, a],
             type: "scatterpolar",
@@ -106,11 +107,11 @@ const Radar = ({
               showgrid: false,
               tickmode: "array",
               showline: false,
-              tickvals: getCategories().map(
-                (a, index) => (index + 1) * oneAngle() - oneAngle() / 2
+              tickvals: getCategories(data).map(
+                (a, index) => (index + 1) * oneAngle(data) - oneAngle(data) / 2
               ),
               ticks: "",
-              ticktext: getCategories(),
+              ticktext: getCategories(data),
               tickfont: {
                 size: 20,
                 color: "gray"
