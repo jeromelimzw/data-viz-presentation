@@ -17,7 +17,9 @@ const selectOptions = [
   { text: "five", value: 5 },
   { text: "six", value: 6 },
   { text: "seven", value: 7 },
-  { text: "eight", value: 8 }
+  { text: "eight", value: 8 },
+  { text: "nine", value: 9 },
+  { text: "ten", value: 10 }
 ];
 
 const Toggles = ({ handleToggle, handleDataSource }) => {
