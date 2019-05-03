@@ -10,7 +10,7 @@ const Code = ({
   return (
     <React.Fragment>
       <h1>Code</h1>
-      <div className="tl f4">
+      <div className="tl f3">
         <pre>{`
       <Plot
       data={[`}</pre>
@@ -18,7 +18,7 @@ const Code = ({
         <pre
           className={`${
             isDividerVisible ? "bg-light-green navy br3" : undefined
-          } pa2`}
+          } pa1`}
         >{`
       ...categoriesAngleArray().map(a => ({
       r: [0, 6.2],

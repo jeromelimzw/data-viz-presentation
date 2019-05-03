@@ -62,10 +62,15 @@ class App extends Component {
     } = this.state;
     const { handleToggle, handleDataSource } = this;
     return (
-      <div className="tc center mt5">
-        <Grid columns="equal" divided>
-          <Grid.Row>
-            <Grid.Column width={6}>
+      <div className="tc  mt4">
+        <Grid divided>
+          <Grid.Row columns={2}>
+            <Grid.Column computer={9} mobile={16}>
+              <h1>Plot</h1>
+              <Toggles
+                handleToggle={handleToggle}
+                handleDataSource={handleDataSource}
+              />
               <Radar
                 data={data}
                 radius={radius}
@@ -78,14 +83,8 @@ class App extends Component {
                 isMarkerVisible={isMarkerVisible}
               />
             </Grid.Column>
-            <Grid.Column width={3} className="fixed">
-              <Toggles
-                handleToggle={handleToggle}
-                handleDataSource={handleDataSource}
-              />
-            </Grid.Column>
 
-            <Grid.Column>
+            <Grid.Column computer={7} mobile={16}>
               <Code
                 isCategoryVisible={isCategoryVisible}
                 isCircleVisible={isCircleVisible}

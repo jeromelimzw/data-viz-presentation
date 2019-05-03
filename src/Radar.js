@@ -18,10 +18,9 @@ const Radar = ({
   data
 }) => {
   return (
-    <div className="fixed">
-      <h1>Plot</h1>
+    <div>
       <Plot
-        className="fixed tc mt0"
+        className=" tc mt0"
         useResizeHandler={true}
         data={[
           ...categoriesAngleArray(data).map(a => ({
@@ -75,12 +74,12 @@ const Radar = ({
           }
         ]}
         layout={{
-          dragmode: "pan",
+          dragmode: "",
           paper_bgcolor: "rgba(0,0,0,0)",
           plot_bgcolor: "rgba(0,0,0,0)",
 
-          width: 700,
-          height: 700,
+          width: 900,
+          height: 900,
           showlegend: false,
 
           polar: {
