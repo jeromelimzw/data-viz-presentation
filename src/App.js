@@ -72,8 +72,6 @@ class App extends Component {
           <Grid divided>
             <Grid.Row columns={2}>
               <Grid.Column computer={9} mobile={16}>
-                <h1>Plot</h1>
-
                 <Radar
                   data={data}
                   radius={radius}
