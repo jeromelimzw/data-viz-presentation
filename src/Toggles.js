@@ -24,11 +24,11 @@ const selectOptions = [
 
 const Toggles = ({ handleToggle, handleDataSource }) => {
   return (
-    <div className=" ">
-      <div class="   center ">
-        <div class=" tc flex f4">
+    <div>
+      <div className="center">
+        <div className="tc flex f4">
           {toggleNames.map((a, index) => (
-            <div className="flex flex-column justify-around center ">
+            <div className="flex flex-column justify-around center" key={index}>
               <label>{a.name}</label>
               <Checkbox
                 key={index}
@@ -37,7 +37,7 @@ const Toggles = ({ handleToggle, handleDataSource }) => {
               />
             </div>
           ))}
-          <div className="f4 ">
+          <div className="f4">
             <label>Number of Categories:</label>
 
             <Dropdown
