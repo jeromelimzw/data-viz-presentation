@@ -1,4 +1,10 @@
 import React from "react";
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import jsx from "react-syntax-highlighter/dist/esm//languages/prism/jsx";
+import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+SyntaxHighlighter.registerLanguage("jsx", jsx);
 
 const Code = ({
   isCategoryVisible,
@@ -11,15 +17,18 @@ const Code = ({
     <React.Fragment>
       <h1>Code</h1>
       <div className="tl f3">
-        <pre>{`
+        <pre>
+          <SyntaxHighlighter language="javascript" style={prism}>
+            {`
       <Plot
-      data={[`}</pre>
+      data={[`}
+          </SyntaxHighlighter>
+        </pre>
 
-        <pre
-          className={`${
-            isDividerVisible ? "bg-light-green navy br3" : undefined
-          } pa1`}
-        >{`
+        <pre className="pa1">
+          <SyntaxHighlighter
+            language="javascript"
+            style={isDividerVisible ? atomDark : prism}>{`
       ...categoriesAngleArray().map(a => ({
       r: [0, 6.2],
       theta: [0, a],
@@ -28,13 +37,13 @@ const Code = ({
       hoverinfo: "text",
       visible: isDividerVisible
       })),
-      `}</pre>
+      `}</SyntaxHighlighter>
+        </pre>
 
-        <pre
-          className={`${
-            isLevelVisible ? "bg-light-green navy br3" : undefined
-          } pa2`}
-        >{`    
+        <pre className="pa2">
+          <SyntaxHighlighter
+            language="javascript"
+            style={isLevelVisible ? atomDark : prism}>{`    
       {
       r: [1, 2.6, 4.0, 5.5],
       theta: [90, 90, 90, 90],
@@ -51,13 +60,13 @@ const Code = ({
                   align: "left",
                   namelength: 30
                 }
-      },`}</pre>
+      },`}</SyntaxHighlighter>
+        </pre>
 
-        <pre
-          className={`${
-            isMarkerVisible ? "bg-light-green navy br3" : undefined
-          } pa2`}
-        >{`              
+        <pre className="pa2">
+          <SyntaxHighlighter
+            language="javascript"
+            style={isMarkerVisible ? atomDark : prism}>{`              
       {
       r: radius,
       theta: theta,
@@ -77,8 +86,10 @@ const Code = ({
               },
       type: "scatterpolar",
       visible: isMarkerVisible
-      } `}</pre>
-        <pre>{` 
+      } `}</SyntaxHighlighter>
+        </pre>
+        <pre>
+          <SyntaxHighlighter language="javascript" style={prism}>{` 
       ]}
       layout={{
               dragmode: "pan",
@@ -91,13 +102,15 @@ const Code = ({
                      sector: this.props.sector,
                      opacity: 1,
                      layer: "above traces",
-        `}</pre>
+        `}</SyntaxHighlighter>
+        </pre>
 
-        <pre
-          className={`${
-            isCircleVisible ? "bg-light-green navy br3" : undefined
-          } pa2`}
-        >{`             radialaxis: {
+        <pre className="pa2">
+          <SyntaxHighlighter
+            language="javascript"
+            style={
+              isCircleVisible ? atomDark : prism
+            }>{`             radialaxis: {
                           showline: false,
                           ticks: "",
                           angle: 0,
@@ -111,13 +124,15 @@ const Code = ({
                           tickvals: [0, 1.9, 3.35, 4.8, 6.2],
                           showticklabels: false,
                           range: [0, 6.5]
-                          },`}</pre>
+                          },`}</SyntaxHighlighter>
+        </pre>
 
-        <pre
-          className={`${
-            isCategoryVisible ? "bg-light-green navy br3" : undefined
-          } pa2`}
-        >{`              angularaxis: {
+        <pre className="pa2">
+          <SyntaxHighlighter
+            language="javascript"
+            style={
+              isCategoryVisible ? atomDark : prism
+            }>{`              angularaxis: {
                            showgrid: false,
                            tickmode: "array",
                            showline: false,
@@ -131,11 +146,16 @@ const Code = ({
                                      color: "gray"
                                      },
                            visible: isCategoryVisible
-                           }`}</pre>
+                           }`}</SyntaxHighlighter>
+        </pre>
 
-        <pre>{`}
-            }}
-    />`}</pre>
+        <pre>
+          <SyntaxHighlighter
+            language="javascript"
+            style={prism}>{`             }
+        }}
+    />`}</SyntaxHighlighter>
+        </pre>
       </div>
     </React.Fragment>
   );
