@@ -1,5 +1,5 @@
 import React from "react";
-import { Checkbox, Dropdown } from "semantic-ui-react";
+import { Checkbox, Dropdown, Menu } from "semantic-ui-react";
 
 const toggleNames = [
   { name: " Dividers", handle: "isDividerVisible" },
@@ -24,34 +24,36 @@ const selectOptions = [
 
 const Toggles = ({ handleToggle, handleDataSource }) => {
   return (
-    <div>
-      <div className="center">
-        <div className="tc flex f4">
-          {toggleNames.map((a, index) => (
-            <div className="flex flex-column justify-around center" key={index}>
-              <label>{a.name}</label>
+    <Menu className="fixed" secondary stackable>
+      <Menu.Item>
+        {toggleNames.map((a, index) => (
+          <div className="pa2" key={index}>
+            <label>
+              {a.name}
+              <br />
               <Checkbox
                 key={index}
                 onChange={() => handleToggle(a.handle)}
                 toggle
               />
-            </div>
-          ))}
-          <div className="f4">
-            <label>Number of Categories:</label>
-
-            <Dropdown
-              options={selectOptions}
-              onChange={handleDataSource}
-              className="f4 ml2"
-              placeholder="choose one"
-              selection
-              defaultValue="eight"
-            />
+            </label>
           </div>
-        </div>
-      </div>
-    </div>
+        ))}
+      </Menu.Item>
+      <Menu.Item>
+        <label>
+          No of Categories
+          <br />
+          <Dropdown
+            options={selectOptions}
+            onChange={handleDataSource}
+            placeholder="choose one"
+            selection
+            defaultValue="eight"
+          />
+        </label>
+      </Menu.Item>
+    </Menu>
   );
 };
 

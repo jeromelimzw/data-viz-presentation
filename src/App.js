@@ -4,6 +4,7 @@ import {
   levelArrayRandomized,
   thetaArray
 } from "./utils/extractData";
+import "./App.css";
 import Toggles from "./Toggles";
 import Code from "./Code";
 import Radar from "./Radar";
@@ -62,40 +63,43 @@ class App extends Component {
     } = this.state;
     const { handleToggle, handleDataSource } = this;
     return (
-      <div className="tc  mt4">
-        <Grid divided>
-          <Grid.Row columns={2}>
-            <Grid.Column computer={9} mobile={16}>
-              <h1>Plot</h1>
-              <Toggles
-                handleToggle={handleToggle}
-                handleDataSource={handleDataSource}
-              />
-              <Radar
-                data={data}
-                radius={radius}
-                theta={theta}
-                names={names}
-                isCategoryVisible={isCategoryVisible}
-                isCircleVisible={isCircleVisible}
-                isDividerVisible={isDividerVisible}
-                isLevelVisible={isLevelVisible}
-                isMarkerVisible={isMarkerVisible}
-              />
-            </Grid.Column>
+      <>
+        <Toggles
+          handleToggle={handleToggle}
+          handleDataSource={handleDataSource}
+        />
+        <div className="tc mt5">
+          <Grid divided>
+            <Grid.Row columns={2}>
+              <Grid.Column computer={9} mobile={16}>
+                <h1>Plot</h1>
 
-            <Grid.Column computer={7} mobile={16}>
-              <Code
-                isCategoryVisible={isCategoryVisible}
-                isCircleVisible={isCircleVisible}
-                isDividerVisible={isDividerVisible}
-                isLevelVisible={isLevelVisible}
-                isMarkerVisible={isMarkerVisible}
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </div>
+                <Radar
+                  data={data}
+                  radius={radius}
+                  theta={theta}
+                  names={names}
+                  isCategoryVisible={isCategoryVisible}
+                  isCircleVisible={isCircleVisible}
+                  isDividerVisible={isDividerVisible}
+                  isLevelVisible={isLevelVisible}
+                  isMarkerVisible={isMarkerVisible}
+                />
+              </Grid.Column>
+
+              <Grid.Column computer={7} mobile={16}>
+                <Code
+                  isCategoryVisible={isCategoryVisible}
+                  isCircleVisible={isCircleVisible}
+                  isDividerVisible={isDividerVisible}
+                  isLevelVisible={isLevelVisible}
+                  isMarkerVisible={isMarkerVisible}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </div>
+      </>
     );
   }
 }

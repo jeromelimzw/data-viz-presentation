@@ -20,7 +20,7 @@ const Radar = ({
   return (
     <div>
       <Plot
-        className=" tc mt0"
+        className="radar"
         useResizeHandler={true}
         data={[
           ...categoriesAngleArray(data).map(a => ({
@@ -77,9 +77,6 @@ const Radar = ({
           dragmode: "",
           paper_bgcolor: "rgba(0,0,0,0)",
           plot_bgcolor: "rgba(0,0,0,0)",
-
-          width: 900,
-          height: 900,
           showlegend: false,
 
           polar: {
