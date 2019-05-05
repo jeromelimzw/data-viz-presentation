@@ -1,8 +1,8 @@
 import React from "react";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import jsx from "react-syntax-highlighter/dist/esm//languages/prism/jsx";
-import { vs } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { solarizedlight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
+import solarizedlight from "./solarizedlight";
 
 SyntaxHighlighter.registerLanguage("jsx", jsx);
 
@@ -18,7 +18,7 @@ const Code = ({
       <h1>Code</h1>
       <div className="tl f3">
         <pre>
-          <SyntaxHighlighter language="javascript" style={vs}>
+          <SyntaxHighlighter language="javascript" style={prism}>
             {`
       <Plot
       data={[`}
@@ -28,7 +28,7 @@ const Code = ({
         <pre className="pa1">
           <SyntaxHighlighter
             language="javascript"
-            style={isDividerVisible ? solarizedlight : vs}>{`
+            style={isDividerVisible ? solarizedlight : prism}>{`
       ...categoriesAngleArray().map(a => ({
       r: [0, 6.2],
       theta: [0, a],
@@ -43,7 +43,7 @@ const Code = ({
         <pre className="pa2">
           <SyntaxHighlighter
             language="javascript"
-            style={isLevelVisible ? solarizedlight : vs}>{`    
+            style={isLevelVisible ? solarizedlight : prism}>{`    
       {
       r: [1, 2.6, 4.0, 5.5],
       theta: [90, 90, 90, 90],
@@ -66,7 +66,7 @@ const Code = ({
         <pre className="pa2">
           <SyntaxHighlighter
             language="javascript"
-            style={isMarkerVisible ? solarizedlight : vs}>{`              
+            style={isMarkerVisible ? solarizedlight : prism}>{`              
       {
       r: radius,
       theta: theta,
@@ -89,7 +89,7 @@ const Code = ({
       } `}</SyntaxHighlighter>
         </pre>
         <pre>
-          <SyntaxHighlighter language="javascript" style={vs}>{` 
+          <SyntaxHighlighter language="javascript" style={prism}>{` 
       ]}
       layout={{
               dragmode: "pan",
@@ -109,7 +109,7 @@ const Code = ({
           <SyntaxHighlighter
             language="javascript"
             style={
-              isCircleVisible ? solarizedlight : vs
+              isCircleVisible ? solarizedlight : prism
             }>{`             radialaxis: {
                           showline: false,
                           ticks: "",
@@ -131,7 +131,7 @@ const Code = ({
           <SyntaxHighlighter
             language="javascript"
             style={
-              isCategoryVisible ? solarizedlight : vs
+              isCategoryVisible ? solarizedlight : prism
             }>{`              angularaxis: {
                            showgrid: false,
                            tickmode: "array",
@@ -150,7 +150,9 @@ const Code = ({
         </pre>
 
         <pre>
-          <SyntaxHighlighter language="javascript" style={vs}>{`             }
+          <SyntaxHighlighter
+            language="javascript"
+            style={prism}>{`             }
         }}
     />`}</SyntaxHighlighter>
         </pre>
