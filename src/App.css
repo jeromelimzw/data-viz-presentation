@@ -6,7 +6,10 @@
 
 @media only screen and (max-width: 600px) {
   .radar {
-    width: 120vw;
-    height: 500px;
+    width: 100vw;
+    height: 100vw;
+  }
+  .fixed {
+    position: relative;
   }
 }

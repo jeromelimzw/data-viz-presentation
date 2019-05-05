@@ -18,7 +18,7 @@ const Radar = ({
   data
 }) => {
   return (
-    <div>
+    <div className="fixed">
       <Plot
         className="radar"
         useResizeHandler={true}
