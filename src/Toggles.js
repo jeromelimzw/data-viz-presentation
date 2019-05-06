@@ -24,7 +24,7 @@ const selectOptions = [
 
 const Toggles = ({ handleToggle, handleDataSource }) => {
   return (
-    <Menu className="fixed" secondary stackable>
+    <Menu className="fixed " secondary stackable>
       <Menu.Item>
         {toggleNames.map((a, index) => (
           <div className="pa2 f4" key={index}>
@@ -41,7 +41,7 @@ const Toggles = ({ handleToggle, handleDataSource }) => {
         ))}
       </Menu.Item>
       <Menu.Item>
-        <label>
+        <label className="ml7">
           No of Categories
           <br />
           <Dropdown
