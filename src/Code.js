@@ -17,18 +17,16 @@ const Code = ({
     <React.Fragment>
       <h1>Code</h1>
       <div className="tl f3">
-        <pre>
-          <SyntaxHighlighter language="javascript" style={prism}>
-            {`
+        <SyntaxHighlighter language="javascript" style={prism}>
+          {`
       <Plot
       data={[`}
-          </SyntaxHighlighter>
-        </pre>
+        </SyntaxHighlighter>
 
-        <pre className="pa1">
-          <SyntaxHighlighter
-            language="javascript"
-            style={isDividerVisible ? solarizedlight : prism}>{`
+        <SyntaxHighlighter
+          language="javascript"
+          style={isDividerVisible ? solarizedlight : prism}
+        >{`
       ...categoriesAngleArray().map(a => ({
       r: [0, 6.2],
       theta: [0, a],
@@ -38,12 +36,11 @@ const Code = ({
       visible: isDividerVisible
       })),
       `}</SyntaxHighlighter>
-        </pre>
 
-        <pre className="pa2">
-          <SyntaxHighlighter
-            language="javascript"
-            style={isLevelVisible ? solarizedlight : prism}>{`    
+        <SyntaxHighlighter
+          language="javascript"
+          style={isLevelVisible ? solarizedlight : prism}
+        >{`    
       {
       r: [1, 2.6, 4.0, 5.5],
       theta: [90, 90, 90, 90],
@@ -61,12 +58,11 @@ const Code = ({
                   namelength: 30
                 }
       },`}</SyntaxHighlighter>
-        </pre>
 
-        <pre className="pa2">
-          <SyntaxHighlighter
-            language="javascript"
-            style={isMarkerVisible ? solarizedlight : prism}>{`              
+        <SyntaxHighlighter
+          language="javascript"
+          style={isMarkerVisible ? solarizedlight : prism}
+        >{`              
       {
       r: radius,
       theta: theta,
@@ -87,9 +83,8 @@ const Code = ({
       type: "scatterpolar",
       visible: isMarkerVisible
       } `}</SyntaxHighlighter>
-        </pre>
-        <pre>
-          <SyntaxHighlighter language="javascript" style={prism}>{` 
+
+        <SyntaxHighlighter language="javascript" style={prism}>{` 
       ]}
       layout={{
               dragmode: "pan",
@@ -103,14 +98,11 @@ const Code = ({
                      opacity: 1,
                      layer: "above traces",
         `}</SyntaxHighlighter>
-        </pre>
 
-        <pre className="pa2">
-          <SyntaxHighlighter
-            language="javascript"
-            style={
-              isCircleVisible ? solarizedlight : prism
-            }>{`             radialaxis: {
+        <SyntaxHighlighter
+          language="javascript"
+          style={isCircleVisible ? solarizedlight : prism}
+        >{`             radialaxis: {
                           showline: false,
                           ticks: "",
                           angle: 0,
@@ -125,14 +117,11 @@ const Code = ({
                           showticklabels: false,
                           range: [0, 6.5]
                           },`}</SyntaxHighlighter>
-        </pre>
 
-        <pre className="pa2">
-          <SyntaxHighlighter
-            language="javascript"
-            style={
-              isCategoryVisible ? solarizedlight : prism
-            }>{`              angularaxis: {
+        <SyntaxHighlighter
+          language="javascript"
+          style={isCategoryVisible ? solarizedlight : prism}
+        >{`              angularaxis: {
                            showgrid: false,
                            tickmode: "array",
                            showline: false,
@@ -147,15 +136,10 @@ const Code = ({
                                      },
                            visible: isCategoryVisible
                            }`}</SyntaxHighlighter>
-        </pre>
 
-        <pre>
-          <SyntaxHighlighter
-            language="javascript"
-            style={prism}>{`             }
+        <SyntaxHighlighter language="javascript" style={prism}>{`             }
         }}
     />`}</SyntaxHighlighter>
-        </pre>
       </div>
     </React.Fragment>
   );
