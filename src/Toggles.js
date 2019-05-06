@@ -2,11 +2,11 @@ import React from "react";
 import { Checkbox, Dropdown, Menu } from "semantic-ui-react";
 
 const toggleNames = [
-  { name: " Dividers", handle: "isDividerVisible" },
-  { name: " Levels", handle: "isLevelVisible" },
-  { name: " Markers", handle: "isMarkerVisible" },
   { name: " Circles", handle: "isCircleVisible" },
-  { name: " Categories", handle: "isCategoryVisible" }
+  { name: " Levels", handle: "isLevelVisible" },
+  { name: " Dividers", handle: "isDividerVisible" },
+  { name: " Categories", handle: "isCategoryVisible" },
+  { name: " Markers", handle: "isMarkerVisible" }
 ];
 
 const selectOptions = [
@@ -27,7 +27,7 @@ const Toggles = ({ handleToggle, handleDataSource }) => {
     <Menu className="fixed" secondary stackable>
       <Menu.Item>
         {toggleNames.map((a, index) => (
-          <div className="pa2" key={index}>
+          <div className="pa2 f4" key={index}>
             <label>
               {a.name}
               <br />
